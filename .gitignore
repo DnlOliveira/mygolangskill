@@ -6,3 +6,6 @@ bin
 
 # golang vendor (dependencies) directory
 vendor
+
+# other files
+.DS_Store
