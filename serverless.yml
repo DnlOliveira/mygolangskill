@@ -1,0 +1,27 @@
+service: mygoservice
+
+provider:
+  name: aws
+  runtime: go1.x
+  stage: dev
+  region: us-east-1
+  profile: default
+
+package:
+ exclude:
+   - ./**
+ include:
+   - ./bin/**
+
+functions:
+  hello:
+    handler: bin/hello
+    events:
+      - http:
+          path: hello
+          method: post
+      - alexaSkill:
+          appId: amzn1.ask.skill.b224d056-da06-480d-ae3f-27db4790bbac
+          enabled: true
+  world:
+    handler: bin/world
